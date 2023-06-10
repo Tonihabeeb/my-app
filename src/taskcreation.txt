@@ -1,0 +1,64 @@
+const TaskCreation = () => {
+  const [taskName, setTaskName] = useState('');
+  const [keywords, setKeywords] = useState('');
+  const [location, setLocation] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Create task with taskName:', taskName, 'keywords:', keywords, 'and location:', location);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Create Task</h2>
+      <input
+        type="text"
+        placeholder="Task Name"
+        value={taskName}
+        onChange={(e) => setTaskName(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Keywords"
+        value={keywords}
+        onChange={(e) => setKeywords(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Location"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+      />
+      <button type="submit">Create Task</button>
+    </form>
+  );
+};
+
+
+
+
+
+
+
+
+
+const DataDisplay = () => {
+  return (
+    <Router>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">AI Assistant</Navbar.Brand>
+        <Nav>
+          <Nav.Link href="/signup">Sign Up</Nav.Link>
+          <Nav.Link href="/login">Login</Nav.Link>
+        </Nav>
+      </Navbar>
+      <Container>
+        <Switch>
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/create-task" component={TaskCreation} />
+        </Switch>
+      </Container>
+    </Router>
+  );
+};
